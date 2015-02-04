@@ -72,7 +72,7 @@ Once your installs are complete, create a file called "gulpfile.js" in the build
     
 We're not going to go into a detailed analysis of the gulpfile, or Gulp. The goal, here, is to get you up and running. If you want more information, you can visit the Gulp site at [www.gulpjs.com](www.gulpjs.com)
 
-Now, add a blank file called "appBootstrap.js" to your app folder (we'll update this file soon). At this point, you should be able to run a successful build. Open up your Node terminal, making sure you run it from your build folder. The output of your build should look something like this:
+Now, add a blank file called "appBootstrap.js" to your app folder (we'll update this file soon). At this point, you should be able to run a successful build. Open up your Node terminal, making sure you run it from your build folder, and type "gulp". The output of your build should look something like this:
 
     [14:04:11] Using gulpfile ~/Projects/PlaceMyOrder/build/gulpfile.js
     [14:04:11] Starting 'lint'...
