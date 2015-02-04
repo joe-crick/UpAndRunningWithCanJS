@@ -1,6 +1,6 @@
 # Setup <a name="setup"></a>
 
-The first thing we need to do is make sure we have everything we need to make our application. If you haven't done so already, download [Node.js](http://nodejs.org/). Follow the instructions to install and configure Node for your machine.
+The first thing we'll do is make sure we have everything we need to make our application. If you haven't done so already, download [Node.js](http://nodejs.org/). Follow the instructions to install and configure Node for your machine.
 	
 ##Folder Structure
 
