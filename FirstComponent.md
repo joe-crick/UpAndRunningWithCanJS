@@ -68,3 +68,5 @@ The template property of the can.Component contains the string value of the can.
 The scope object contains the properties and methods the can.Component will use. Any property or method defined on the scope object is available from the can.Component's template as either a Stache data key, or a function. In our example above, we created a property, "currentRestaurant", and then referenced it as a Stache data key in our template. 
 
 ![](images/ComponentScopeTemplateLink.png)
+
+The scope is a special type of object, called a can.Map. can.Map objects are observable. Observable objects provide a way for you to listen for and keep track of changes to them. What this means, practically, is that if you make a change to your scope, those changes will be reflected automatically in your template. We'll see how this works in the next chapter.
