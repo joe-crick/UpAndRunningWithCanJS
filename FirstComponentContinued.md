@@ -108,7 +108,11 @@ Open up RestaurantListComponent.js, and modify the scope's restaurantSelected pr
 	restaurantSelected: function(viewModel, select){
             var selectedRestaurant = select.find('option:checked').data('restaurant');
             var currentRestaurant = 'currentRestaurant';
+            
+            //Set the property
             this.attr(currentRestaurant, selectedRestaurant);
+            
+            //Get the property
             alert(this.attr(currentRestaurant).name);
         }
 
