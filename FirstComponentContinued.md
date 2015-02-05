@@ -1,4 +1,5 @@
-# Diving Deeper into can.Component <a name="more-component></a>
+#Diving Deeper into can.Component <a name="more-component></a>
+
 	
 Now that we know how to create a basic can.Component, let's look at making the Component a bit more useable. To begin that, let's build out the can.Component's template.  
 
@@ -36,7 +37,7 @@ It will be easiest for us to look at these with an example, so let's create one.
     <button id="PlaceAnOrder">Place an Order from {{name}}</button>
     {{/currentRestaurant}}
 
-Stache templates support both [Mustache](https://github.com/janl/mustache.js/) and [Handlebar](http://handlebarsjs.com/) template formats. For more information on the details of these formats, see the respective websites.
+
 
 ###Keys
 The keys in the Stache template are the text portions bounded by curly braces, e.g., {{*my-text*}}. 
@@ -174,4 +175,5 @@ These are the changes we've made:
 2. We wrapped our export in an IIFE, because we now need to instantiate our view model, and assign it to our scope.
 
 If you go back out to your application, and refresh the page, it should all look and work the same. All we've done, by separating out the view model, is make the back end easier to manage.
-What's next? In the next chapter, we'll learn about working with some more realistic data by adding REST service interaction with can.Model.
+
+What's next? In the next chapter, we'll learn about working with some more realistic data by adding REST service interaction with can.Model.
