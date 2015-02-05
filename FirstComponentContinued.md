@@ -1,4 +1,4 @@
-#Diving Deeper into can.Component <a name="more-component></a>
+#Diving Deeper into can.Component <a name="more-component"></a>
 
 	
 Now that we know how to create a basic can.Component, let's look at making the Component a bit more useable. To begin that, let's build out the can.Component's template.  
@@ -37,7 +37,7 @@ It will be easiest for us to look at these with an example, so let's create one.
     <button id="PlaceAnOrder">Place an Order from {{name}}</button>
     {{/currentRestaurant}}
 
-
+Stache templates support both [Mustache](https://github.com/janl/mustache.js/) and [Handlebar](http://handlebarsjs.com/) template formats. For more information on the details of these formats, see the respective websites.
 
 ###Keys
 The keys in the Stache template are the text portions bounded by curly braces, e.g., {{*my-text*}}. 
