@@ -50,33 +50,39 @@ That's all you need to do to include can.fixture in your project. Now, let's cre
      */
     module.exports = (function () {
     
-        can.fixture("GET /restaurants", function requestHandler() {
+        function initFixture() {
+            can.fixture("GET /restaurants", function requestHandler() {
     
-            return [
-                {
-                    "name": "Spago",
-                    "location": "USA",
-                    "cuisine": "Modern",
-                    "owner": "Wolfgang Puck",
-                    "id": 1
-                },
-                {
-                    "name": "El Bulli",
-                    "location": "Spain",
-                    "cuisine": "Modern",
-                    "owner": "Ferran Adria",
-                    "id": 2
-                },
-                {
-                    "name": "The French Laundry",
-                    "location": "USA",
-                    "cuisine": "French Traditional",
-                    "owner": "Thomas Keller",
-                    "id": 3
-                }
-            ];
-        })
-        
+                return [
+                    {
+                        "name": "Spago",
+                        "location": "USA",
+                        "cuisine": "Modern",
+                        "owner": "Wolfgang Puck",
+                        "id": 1
+                    },
+                    {
+                        "name": "El Bulli",
+                        "location": "Spain",
+                        "cuisine": "Modern",
+                        "owner": "Ferran Adria",
+                        "id": 2
+                    },
+                    {
+                        "name": "The French Laundry",
+                        "location": "USA",
+                        "cuisine": "French Traditional",
+                        "owner": "Thomas Keller",
+                        "id": 3
+                    }
+                ];
+            })
+        };
+    
+        return {
+            initFixture: initFixture
+        };
+    
     }());
    
 The first argument to can.fixture, "GET /restaurants", tells CanJS to intercept any GET requests to the resource "/restaurants". The second argument is a function that returns the data we want to simulate. Because we're simulating a findAll method, we need to return an array. The findAll method expects an array. If it does not receive one, it will throw an error.
@@ -115,9 +121,11 @@ Let's go over a few details in the code above to make sure they're clear. First,
 
 	RestaurantModel.findAll({//paramsObject}, 
 		function success(returnedObject){
-			//		},
+			//
+		},
 		function error(errorObject){
-			//		});
+			//
+		});
 
 In the code above, we called the findAll method indirectly. We did it in this line:
 
