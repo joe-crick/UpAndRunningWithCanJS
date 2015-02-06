@@ -37,7 +37,7 @@ The findXxx methods are available directly off of the object definition. The cre
 
 ##The Data for Our Model
 
-We're not going to connect to a server to retrieve our data; however, we're going code our model as if we were. How can this possibly work? CanJS provides a handy utility, can.fixture, that we can use to mimic the functionality of connecting to a server. As the CanJS docs say, "can.fixture intercepts an AJAX request and simulates the response with a file or a function. You can use them to develop JavaScript independently of backend services."
+We're not going to connect to a server to retrieve our data; however, we're going code our model as if we were. How can this possibly work? CanJS provides a handy utility, can.fixture, that we can use to mimic the functionality of connecting to a server. As the CanJS docs say, "can.fixture intercepts an AJAX request and simulates the response with a file or a function. You can use [it] to develop JavaScript independently of backend services."
 
 can.fixture is not included with the base CanJS package. Adding it in, however, is easy. In fact, we've already done it. Back in [Application Foundations](#app-foundations), when we created our index.html file, we put this line directly below where we included CanJS:
 
