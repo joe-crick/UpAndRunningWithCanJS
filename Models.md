@@ -1,6 +1,6 @@
 # Models (&amp; Fixtures) <a name="models"></a>
 	
-The next item we're going to go over is can.Model. Models make interacting with JSON REST services *really easy*. We'll use can.Model to provide data for our restaurant list. 
+The next item we're going to go over is can.Model. Models make interacting with JSON REST services *really easy*. We'll use a can.Model to provide data for our restaurant list. 
 
 In the models folder, create a subfolder called "restaurants". In that folder, create two files:
 
