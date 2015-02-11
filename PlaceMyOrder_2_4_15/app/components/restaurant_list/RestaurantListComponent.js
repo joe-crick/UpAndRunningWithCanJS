@@ -20,7 +20,7 @@ can.Component.extend({
 
     tag: 'restaurant-list',
     template: can.view('components/restaurant_list/restaurant_list.stache'),
-    scope: RestaurantListViewModel //as opposed to examples, this provides instances
+    scope: RestaurantListViewModel
 
 });
 
