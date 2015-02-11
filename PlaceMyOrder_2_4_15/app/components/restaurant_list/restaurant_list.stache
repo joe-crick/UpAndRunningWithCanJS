@@ -1,0 +1,26 @@
+{{#visible}}
+    <label for="RestaurantList">Select a Restaurant:</label>
+    <select id="RestaurantList" can-change="restaurantSelected">
+        <option value="-1"></option>
+        {{#each restaurants}}
+            <option {{data 'restaurant'}}>{{name}}</option>
+        {{/each}}
+    </select>
+
+
+    {{#currentRestaurant}}
+        {{#visible}}
+            <div id="CurrentRestaurant">
+
+                <h3 id="RestaurantName">{{name}}</h3>
+                <ul id="RestaurantDetails">
+                    <li>Location: {{location}}</li>
+                    <li>Cuisine: {{cuisine}}</li>
+                    <li>Owner: {{owner}}</li>
+                </ul>
+            </div>
+
+            <button id="PlaceAnOrder" can-click="showMenu">Place an Order from {{name}}</button>
+        {{/visible}}
+    {{/currentRestaurant}}
+{{/visible}}

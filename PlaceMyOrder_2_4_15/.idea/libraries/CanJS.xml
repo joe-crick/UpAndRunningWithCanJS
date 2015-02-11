@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="CanJS" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/app/libs/can.custom.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/libs/can.custom.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
