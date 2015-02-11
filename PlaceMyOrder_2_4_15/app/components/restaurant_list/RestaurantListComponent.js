@@ -5,7 +5,7 @@ var RestaurantListViewModel = can.Map.extend({
         this.attr('currentRestaurant', {visible: false});
         this.attr('visible', true);
     },
-    restaurantSelected: function (viewModel, select) {
+    restaurantSelected: function (isChanged, select) {
         var restaurant = select.find('option:checked').data('restaurant');
         this.attr('currentRestaurant', restaurant);
     },
