@@ -1,25 +1,43 @@
 $(function () {
 
+    function getRestaurantMenu(restaurant, that) {
+        RestaurantMenusModel.findOne({id: restaurant.restaurantId},
+            function success(selectedMenus) {
+                that.attr('menus', {
+                    collection: selectedMenus.menus,
+                    restaurantName: restaurant.name
+                });
+            },
+            function error(xhr) {
+                alert(xhr.message);
+            });
+    }
+
     var ApplicationState = can.Map.extend({
         define: {
             restaurant: {
                 value: {},
                 serialize: function () {
-                    return this.attr('restaurant.name');
+                    var name = this.attr('restaurant.name');
+                    return name ? name.replace(/\s/ig, '_') : name;
                 },
                 set: function (restaurant) {
+                    var that = this;
+
+                    if (!restaurant) return restaurant;
+
+                    if(typeof restaurant === 'string'){
+                        RestaurantModel.findOne({name: restaurant},
+                        function success(restaurantModel){
+                            getRestaurantMenu(restaurantModel, that);
+                        },
+                        function error(xhr){
+                            alert(xhr.message);
+                        })
+                    }
+
                     if (restaurant.restaurantId) {
-                        var that = this;
-                        RestaurantMenusModel.findOne({id: restaurant.restaurantId},
-                            function success(selectedMenus) {
-                                that.attr('menus', {
-                                    collection: selectedMenus.menus,
-                                    restaurantName: restaurant.name
-                                });
-                            },
-                            function error(xhr) {
-                                alert(xhr.message);
-                            });
+                        getRestaurantMenu(restaurant, that);
                     }
                     return restaurant;
                 }
@@ -30,8 +48,8 @@ $(function () {
             },
             confirmation: {
                 value: {},
-                set: function(confirmation){
-                    if(typeof confirmation === 'string') {
+                set: function (confirmation) {
+                    if (typeof confirmation === 'string') {
                         alert(confirmation);
                         this.attr('menus', null);
                     }

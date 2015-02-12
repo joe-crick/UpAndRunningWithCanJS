@@ -1,15 +1,15 @@
 {{#visible}}
     <label for="RestaurantList">Select a Restaurant:</label>
-    <select id="RestaurantList" can-change="restaurantSelected">
+    <select id="RestaurantList" can-value="currentRestaurant">
         <option value="-1"></option>
         {{#each restaurants}}
-            <option {{data 'restaurant'}}>{{name}}</option>
+            <option value="{{restaurantId}}">{{name}}</option>
         {{/each}}
     </select>
 
 
-    {{#currentRestaurant}}
-        {{#visible}}
+    {{#if currentRestaurant}}
+        {{#currentRestaurant}}
             <div id="CurrentRestaurant">
 
                 <h3 id="RestaurantName">{{name}}</h3>
@@ -21,6 +21,6 @@
             </div>
 
             <button id="PlaceAnOrder" can-click="showMenu">Place an Order from {{name}}</button>
-        {{/visible}}
-    {{/currentRestaurant}}
+        {{/currentRestaurant}}
+    {{/if}}
 {{/visible}}

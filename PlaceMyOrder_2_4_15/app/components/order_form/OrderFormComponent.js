@@ -1,5 +1,4 @@
 function createOrder(menuItems) {
-
     this.attr('menus.collection').each(function (itemSet) {
         itemSet.attr('items').each(function (item) {
             if (item.attr('selected')) {
@@ -15,7 +14,6 @@ function createOrder(menuItems) {
 }
 
 function validateOrder(order, errors) {
-
     var errorCheck = order.errors();
 
     for (var issue in errorCheck) {
@@ -28,7 +26,6 @@ function validateOrder(order, errors) {
 
 var RestaurantMenuViewModel = can.Map.extend({
     init: function () {
-
         this.attr('delivery', {});
         this.attr('order', {});
         this.attr('issues', {});

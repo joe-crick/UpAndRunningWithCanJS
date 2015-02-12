@@ -1,5 +1,10 @@
 var MenuViewModel = can.Map.extend({
-    menuData: {}
+    menuData: {},
+    goHome: function(viewModel, element, event){
+        this.attr('menus', null);
+        this.attr('restaurant', null);
+        event.preventDefault();
+    }
 });
 
 var siteMenuViewModel = new MenuViewModel();

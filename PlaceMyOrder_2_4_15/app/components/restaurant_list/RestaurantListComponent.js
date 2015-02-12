@@ -1,13 +1,18 @@
 var RestaurantListViewModel = can.Map.extend({
-
+    define: {
+        currentRestaurant: {
+            value: {},
+            type: 'number',
+            set: function (newValue) {
+                return isNaN(newValue) ? newValue : this.attr('restaurants')[(newValue - 1)];
+            }
+        }
+    },
     init: function () {
         this.attr('restaurants', new RestaurantModel.List({}));
-        this.attr('currentRestaurant', {visible: false});
+        this.attr('currentRestaurant', {});
         this.attr('visible', true);
-    },
-    restaurantSelected: function (viewModel, select) {
-        var restaurant = select.find('option:checked').data('restaurant');
-        this.attr('currentRestaurant', restaurant);
+        this.attr('selected', {});
     },
     showMenu: function () {
         //Sets the restaurant value on the parent scope (AppState)
@@ -20,7 +25,7 @@ can.Component.extend({
 
     tag: 'restaurant-list',
     template: can.view('components/restaurant_list/restaurant_list.stache'),
-    scope: RestaurantListViewModel //as opposed to examples, this provides instances
+    scope: RestaurantListViewModel
 
 });
 

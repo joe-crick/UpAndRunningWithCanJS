@@ -115,6 +115,36 @@ can.fixture("GET /restaurants", function requestHandler() {
     ];
 });
 
+can.fixture("GET /restaurant/{name}", function requestHandler(request) {
+
+    var restaurantMap = {
+        "Spago": {
+            "name": "Spago",
+            "location": "USA",
+            "cuisine": "Modern",
+            "owner": "Wolfgang Puck",
+            "restaurantId": 1
+        },
+        "El_Bulli": {
+            "name": "El Bulli",
+            "location": "Spain",
+            "cuisine": "Modern",
+            "owner": "Ferran Adria",
+            "restaurantId": 2
+        },
+        "The_French_Laundry": {
+            "name": "The French Laundry",
+            "location": "USA",
+            "cuisine": "French Traditional",
+            "owner": "Thomas Keller",
+            "restaurantId": 3
+        }
+    };
+
+    return restaurantMap[request.data.name];
+
+});
+
 /**
  * Menu Model
  */

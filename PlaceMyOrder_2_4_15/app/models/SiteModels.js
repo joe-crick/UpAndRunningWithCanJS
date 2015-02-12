@@ -5,7 +5,8 @@ var MenuModel = can.Model.extend({
     {});
 
 var RestaurantModel = can.Model.extend({
-        findAll: "GET /restaurants"
+        findAll: "GET /restaurants",
+        findOne: 'GET /restaurant/{name}'
     },
     {});
 
@@ -16,7 +17,6 @@ var RestaurantMenusModel = can.Model.extend({
 var MenuOrder = can.Model.extend({
         create: 'POST /createOrder',
         init: function () {
-            'use strict';
 
             this.validatePresenceOf('delivery.address');
 
