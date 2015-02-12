@@ -134,4 +134,17 @@ The scope object is the can.Component's view model. The view model is an abstrac
 
 ![](images/2_first_component/ComponentScopeTemplateLink.png)
 
-The scope is a special type of object, called a "can.Map". can.Map objects are observable. Observable objects provide a way for you to listen for and keep track of changes to them. What this means, practically, is that if you make a change to your scope, those changes will be reflected automatically in your template. We'll see how this works in the next chapter.
+####can.Map &amp; can.List
+The scope is a special type of object, called a "can.Map". can.Map objects are observable. Observable objects provide a way for you to listen for and keep track of changes to them. What this means, in this instance, is that if you make a change to your scope, those changes will be reflected automatically in your view. If you've cross-bound the values between your scope and your template, changes to your view will also be reflected in your scope. We'll see how this works in the next chapter.
+
+can.Map objects listen for changes made via their attr function. This is important. In order to fire the necessary events when you change a property on a can.Map, you must use the attr function when setting a value.
+
+The attr function can be used to either get or set a property on a can.Map. The attr works with deep properties---i.e., properties within properties. Here's an example:
+
+     //Get the first property off of the name property off of person
+     myCanMapInstance.attr('person.name.first');
+
+     //Set the last property of the person's name property
+     myCanMapInstance.attr('person.name.last', 'Bach');
+
+Observable arrays are also available with can.List, which is based on can.Map. These concepts are important to understand as we move forward.
