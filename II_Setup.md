@@ -6,8 +6,6 @@ The custom download page loads with all the elements in the core CanJS library a
 
 The right side of the page lists all of the plugins. From the list of plugins, select the following:
 
-![](images/DownloadOptions.png)
-
 At the bottom of the page, click the download button. You'll be promoted to download a file called "can.custom.js". Save that file to your local machine.
 
 In the next step, we'll set up the application's folder structure, and move the can.custom.js file into its appropriate folder in the app.
