@@ -26,8 +26,8 @@ If I only want to pass in staticProperties, I must call the method as follows:
 	can.Construct.extend({
     	//Static properties here
     },
-     //Blank object as second parameter
-     {});
+  	//Blank object as second parameter
+  	{});
 
 This pattern will apply to all objects in CanJS that have an extend method.
 
@@ -108,7 +108,7 @@ All we have to do is declare the can.Component using its extend method.  Once yo
 
 Let's look at an image that describes how all of this works, to make it clearer:
 
-![](images/ComponentLoadCycle.png)
+![](images/2_first_component/ComponentLoadCycle.png)
 
 ##Basic Anatomy of a can.Component
 Now that we have a simple, working can.Component, let's look at it in more detail. The can.Component we created above had three properties.
@@ -120,11 +120,11 @@ Now that we have a simple, working can.Component, let's look at it in more detai
 ###The "tag" Property
 The can.Component's tag property associates that can.Component with a specific, custom HTML tag:
 
-![](images/ComponentTagLinkDiagram.png)
+![](images/2_first_component/ComponentTagLinkDiagram.png)
 
 As mentioned above, when the template containing the can.Component's tag is parsed, the can.Component is instantiated, and the contents of its rendered template are inserted as the HTML contents of the custom tag:
 
-![](images/ComponentTagRenderedHTML.png)
+![](images/2_first_component/ComponentTagRenderedHTML.png)
 
 ###Template
 The template property of the can.Component contains the string value of the can.Component's template. Note that the template property just contains a string value. You can inline the template, if it is small. However, the recommended way of working with templates, to maintain separation of concerns, is to keep them in their own files and load them using can.view, as we have done here.
@@ -132,6 +132,6 @@ The template property of the can.Component contains the string value of the can.
 ###Scope
 The scope object is the can.Component's view model. The view model is an abstraction of the view that exposes public properties and functions. Any property or method defined on the scope object is available from the can.Component's template as either a Stache data key, or a function. In our example above, we created a property, "currentRestaurant", and then referenced it as a Stache data key in our template.
 
-![](images/ComponentScopeTemplateLink.png)
+![](images/2_first_component/ComponentScopeTemplateLink.png)
 
 The scope is a special type of object, called a "can.Map". can.Map objects are observable. Observable objects provide a way for you to listen for and keep track of changes to them. What this means, practically, is that if you make a change to your scope, those changes will be reflected automatically in your template. We'll see how this works in the next chapter.

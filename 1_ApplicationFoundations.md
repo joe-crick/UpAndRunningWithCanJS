@@ -16,7 +16,7 @@ And a few supporting objects:
 2. Menu Items
 3. Restaurant List
 
-![](images/AppStateDiagram.png)
+![](images/1_application_foundations/AppStateDiagram.png)
 
 Now that our basic environment has been setup, and we have an outline of what we're going to build, let's start working with actual code. This step will involve setting up our foundations:
 
