@@ -52,21 +52,21 @@ Let's create a fixture that will respond to our requests for menu item data. We 
                 "location": "USA",
                 "cuisine": "Modern",
                 "owner": "Wolfgang Puck",
-                "id": 1
+                "restaurantId": 1
             },
             {
                 "name": "El Bulli",
                 "location": "Spain",
                 "cuisine": "Modern",
                 "owner": "Ferran Adria",
-                "id": 2
+                "restaurantId": 2
             },
             {
                 "name": "The French Laundry",
                 "location": "USA",
                 "cuisine": "French Traditional",
                 "owner": "Thomas Keller",
-                "id": 3
+                "restaurantId": 3
             }
         ];
     });
