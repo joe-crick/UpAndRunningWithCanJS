@@ -28,4 +28,3 @@ can.Component.extend({
     scope: RestaurantListViewModel
 
 });
-

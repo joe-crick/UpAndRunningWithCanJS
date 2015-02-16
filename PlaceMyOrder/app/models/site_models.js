@@ -1,6 +1,5 @@
-
-var MenuModel = can.Model.extend({
-        findOne: "GET /menu"
+var SiteMenuModel = can.Model.extend({
+        findOne: "GET /site_menu"
     },
     {});
 
@@ -11,8 +10,9 @@ var RestaurantModel = can.Model.extend({
     {});
 
 var RestaurantMenusModel = can.Model.extend({
-    findOne: "GET /restaurantMenus/{id}"
-});
+        findOne: "GET /restaurantMenus/{id}"
+    },
+    {});
 
 var MenuOrder = can.Model.extend({
         create: 'POST /createOrder',

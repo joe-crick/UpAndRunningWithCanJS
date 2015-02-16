@@ -148,7 +148,7 @@ can.fixture("GET /restaurant/{name}", function requestHandler(request) {
 /**
  * Menu Model
  */
-can.fixture("GET /menu", function requestHandler() {
+can.fixture("GET /site_menu", function requestHandler() {
     return {
         menuText: {
             "PageTitle": "PlaceMyOrder.com",
