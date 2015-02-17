@@ -20,7 +20,7 @@ can.Component.extend({
             SiteMenuModel.findOne({},
                 function success(menu) {
                     siteMenuViewModel.attr('menuData', menu);
-                    this.attr('menuData.homeLink', can.route.link( "Restaurants", {}, false ));
+                    siteMenuViewModel.attr('menuData.homeLink', can.route.link( "Restaurants", {}, false ));
                 },
                 function error(xhr) {
                     alert(xhr.error.message);
