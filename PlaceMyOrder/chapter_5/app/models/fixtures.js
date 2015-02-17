@@ -28,6 +28,13 @@ can.fixture("GET /restaurants", function requestHandler() {
 });
 
 /**
+ * Order Fixture
+ */
+can.fixture('POST /order', function requestHandler(){
+    return true;
+});
+
+/**
  * Restaurant Menus Fixture
  */
 can.fixture("GET /menus/{id}", function requestHandler(request) {
