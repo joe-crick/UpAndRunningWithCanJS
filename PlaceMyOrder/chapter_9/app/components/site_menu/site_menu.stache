@@ -10,12 +10,12 @@
         </li>
     </ul>
 
+    <!--Begin update -->
     <ul id="lg-menu" class="nav hidden-xs">
-        <li class="active"><i class="glyphicon glyphicon-cutlery"></i> {{homeLink}}</li>
+        <li class="active">{{&HomeLink}}</li>
     </ul>
+    <!--End update -->
 
-
-    <!-- tiny only nav-->
     <ul id="xs-menu" class="nav visible-xs">
         <li><a class="text-center" href="#!restaurants"><i class="glyphicon glyphicon-cutlery"></i></a></li>
     </ul>

@@ -120,59 +120,124 @@ Next, add the following code to Fixtures.js:
 Finally, update the Application State object in app.js, as follows:
 
 	function getRestaurantMenu(restaurant, that) {
-            RestaurantMenusModel.findOne({id: restaurant.restaurantId},
-                function success(selectedMenus) {
-                    that.attr('menus', {
-                        collection: selectedMenus.menus,
-                        restaurantName: restaurant.name
-                    });
-                },
-                function error(xhr) {
-                    alert(xhr.message);
-                });
-        }
+        that.attr('menus', new RestaurantMenusModel.List({id: restaurant.restaurantId}));
+    }
+
+    function setAppToDefaultState() {
+        this.attr('menus', null);
+    }
+
+    function showSelectedRestaurantMenus(restaurant, that) {
+        this.attr('restaurantName', restaurant);
+        RestaurantModel.findOne({name: restaurant},
+            function success(restaurantModel) {
+                getRestaurantMenu(restaurantModel, that);
+                return restaurantModel;
+            },
+            function error(xhr) {
+                alert(xhr.message);
+                return null;
+            })
+    }
 
         var ApplicationState = can.Map.extend({
             define: {
                 restaurant: {
                     ...
                     set: function (restaurant) {
-                        var that = this;
+                    var that = this;
 
-                        if (!restaurant) return restaurant;
+                    if (!restaurant) return restaurant;
 
-                        if(typeof restaurant === 'string'){
-                            RestaurantModel.findOne({name: restaurant},
-                            function success(restaurantModel){
-                                getRestaurantMenu(restaurantModel, that);
-                            },
-                            function error(xhr){
-                                alert(xhr.message);
-                            })
-                        }
-
-                        if (restaurant.restaurantId) {
-                            getRestaurantMenu(restaurant, that);
-                        }
+                    if(typeof restaurant === 'string'){
+                        return showSelectedRestaurantMenus.call(this, restaurant, that);
+                    }
+                    else if (restaurant.restaurantId) {
+                        getRestaurantMenu(restaurant, that);
                         return restaurant;
                     }
+
+                }
                 },
                 ...
 
 Note, that we've refactored the call to RestaurantMenusModel out into its own function. Now, when you change the value of the restaurant in the URL, the menu changes as well.
 
 ##Creating Anchor Tags with can.route.link
-The last thing we need to do is add functionality to our Site Menu. Open up site_menu_component.js, and add the following method to MenuViewModel:
+The last thing we need to do is add functionality to our Site Menu. Open up the "site_menu.stache" file in your site_menu components folder. Edit it, as follows:
 
-	var MenuViewModel = can.Map.extend({
-		...
-        goHome: function (viewModel, element, event) {
-            this.attr('menus', null);
-            this.attr('restaurant', null);
-            event.preventDefault();
+	{{#menuData.menuText}}
+        <ul class="nav">
+            <li><a class="visible-xs text-center" data-toggle="offcanvas" href="#">
+
+        ...
+
+        <!--Begin update -->
+        <ul id="lg-menu" class="nav hidden-xs">
+            <li class="active">{{&HomeLink}}</li>
+        </ul>
+        <!--End update -->
+
+        ...
+
+    {{/menuData.menuText}}
+
+The "&" character in the data key tells Stache to include the unescaped value of the content it receives. We'll be generating an anchor tag, so we need to use this.
+
+Open up site_menu_component.js, and add the following method to the can.Component:
+
+	can.Component.extend({
+        tag: "menu",
+        template: can.view('components/site_menu/site_menu.stache'),
+        scope: SiteMenuViewModel,
+        events: {
+            inserted: function () {
+                var siteMenuViewModel = this.scope;
+                SiteMenuModel.findOne({},
+                    function success(menu) {
+                        siteMenuViewModel.attr('menuData', menu);
+                        //--> Add this line
+                        siteMenuViewModel.attr('menuData.menuText.HomeLink',
+                            can.route.link( '<i class="glyphicon glyphicon-cutlery"></i> Restaurants', {restaurant: null}, false ));
+                    },
+                    function error(xhr) {
+                        alert(xhr.error.message);
+                    });
+            }
         }
     });
 
-This method resets the Application State's menus and restaurant attributes, passed in via the custom HTML tag in base_template.stache.
+Here, we add a can route link to the view template, using can.route.link. You should always use can.route.link when adding anchor tags to your application.
 
-Select a restaurant from the list, then click the Place Order button. Once a menu displays, click on the Restaurants link. The menu will disappear, and the application will be returned to the default state, where you select a restaurant form the list.
+Finally, update your app.js, adding code that will respond to the application state change. Append the following below the "getRestaurantMenu" function:
+
+        function setAppToDefaultState() {
+            this.attr('menus', null);
+        }
+
+Update the restaurant attribute `set` function on your ApplicationState:
+
+    set: function (restaurant) {
+        var that = this;
+
+        if (!restaurant) return restaurant;
+
+        if(typeof restaurant === 'string'){
+
+			//--> Add this conditional code
+            if(restaurant === 'null'){
+                setAppToDefaultState.call(this);
+                return null;
+            }
+
+            return showSelectedRestaurantMenus.call(this, restaurant, that);
+
+        }
+        else if (restaurant.restaurantId) {
+            getRestaurantMenu(restaurant, that);
+            return restaurant;
+        }
+
+    }
+
+Now, open up your application in the browser (refresh, if you haven't). Select a restaurant from the list, then click the Place Order button. Once a menu displays, click on the Restaurants link. The menu will disappear, and the application will be returned to the default state, where you select a restaurant form the list.

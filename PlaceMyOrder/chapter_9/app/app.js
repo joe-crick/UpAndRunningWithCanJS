@@ -4,6 +4,23 @@ $(function () {
         that.attr('menus', new RestaurantMenusModel.List({id: restaurant.restaurantId}));
     }
 
+    function setAppToDefaultState() {
+        this.attr('menus', null);
+    }
+
+    function showSelectedRestaurantMenus(restaurant, that) {
+        this.attr('restaurantName', restaurant);
+        RestaurantModel.findOne({name: restaurant},
+            function success(restaurantModel) {
+                getRestaurantMenu(restaurantModel, that);
+                return restaurantModel;
+            },
+            function error(xhr) {
+                alert(xhr.message);
+                return null;
+            })
+    }
+
     var ApplicationState = can.Map.extend({
         define: {
             restaurant: {
@@ -18,15 +35,14 @@ $(function () {
                     if (!restaurant) return restaurant;
 
                     if(typeof restaurant === 'string'){
-                        this.attr('restaurantName', restaurant);
-                        RestaurantModel.findOne({name: restaurant},
-                            function success(restaurantModel){
-                                getRestaurantMenu(restaurantModel, that);
-                                return restaurantModel;
-                            },
-                            function error(xhr){
-                                alert(xhr.message);
-                            })
+
+                        if(restaurant === 'null'){
+                            setAppToDefaultState.call(this);
+                            return null;
+                        }
+
+                        return showSelectedRestaurantMenus.call(this, restaurant, that);
+
                     }
                     else if (restaurant.restaurantId) {
                         getRestaurantMenu(restaurant, that);

@@ -2,11 +2,6 @@ var SiteMenuViewModel = can.Map.extend({
     init: function () {
         this.attr('menuData', {});
         this.attr('homeLink', "");
-    },
-    goHome: function (viewModel, element, event) {
-        this.attr('menus', null);
-        this.attr('restaurant', null);
-        event.preventDefault();
     }
 });
 
@@ -20,7 +15,8 @@ can.Component.extend({
             SiteMenuModel.findOne({},
                 function success(menu) {
                     siteMenuViewModel.attr('menuData', menu);
-                    siteMenuViewModel.attr('menuData.homeLink', can.route.link( "Restaurants", {}, false ));
+                    siteMenuViewModel.attr('menuData.menuText.HomeLink',
+                        can.route.link( '<i class="glyphicon glyphicon-cutlery"></i> Restaurants', {restaurant: null}, false ));
                 },
                 function error(xhr) {
                     alert(xhr.error.message);
