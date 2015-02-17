@@ -164,4 +164,4 @@ The last thing we need to do is add functionality to our Site Menu. Open up site
 
 This method resets the Application State's menus and restaurant attributes, passed in via the custom HTML tag in base_template.stache.
 
-Select a restaurant from the list, then click the Place Order button. Once a menu displays, click on the Restaurants link. The menu will disappear, and the application will be returned to the default state, where you select a restaurant form the list. 
+Select a restaurant from the list, then click the Place Order button. Once a menu displays, click on the Restaurants link. The menu will disappear, and the application will be returned to the default state, where you select a restaurant form the list.

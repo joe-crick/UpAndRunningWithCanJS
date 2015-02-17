@@ -1,6 +1,6 @@
 # Models (&amp; Fixtures) <a name="models"></a>
 
-The next item we're going to go over is can.Model. Models make interacting with JSON REST services *really easy*. They do this by encapsulating a lot of the code required to connect to a service, and managing the data the service returns. Additionally, can.Model extends can.Map, meaning that the objects returned by a model are observable---and they have all of the features of a can.Map.
+The next item we're going to go over is can.Model. Models make interacting with JSON REST services *really easy*. They do this by encapsulating most of the code required to connect to a service, and managing the data the service returns. Additionally, can.Model extends can.Map, meaning that the objects returned have all of the features of a can.Map, such as being observable.
 
 We'll use a can.Model to provide data for our restaurant list.
 
@@ -36,11 +36,11 @@ The findXxx methods are available directly off of the object definition (i.e., t
 
 ##The Data for Our Model
 
-We're not going to connect to a server to retrieve our data; however, we're going code our model as if we were. How can this possibly work? CanJS provides a handy utility, can.fixture, that we can use to mimic the functionality of connecting to a server. As the CanJS docs say, "can.fixture intercepts an AJAX request and simulates the response with a file or a function. You can use them to develop JavaScript independently of backend services."
+We're not going to connect to a server to retrieve our data; however, we're going code our model as if we were. How can this possibly work? CanJS provides a handy utility, can.fixture, that we can use to mimic the functionality of connecting to a server. As the CanJS docs say, "can.fixture intercepts an AJAX request and simulates the response with a file or a function. You can [can.fixutres] to develop JavaScript independently of backend services."
 
-can.fixture is not included with the base CanJS package. We included it, however, when we downloaded our custom build.
+can.fixture is not included with the base CanJS package. It's a good practice to keep it separate from your production CanJS library, which is why we downloaded it from its CDN in a separate script tag, rather than including it with our custom download. *If you use can.fixture during development, remember to remove it once you are connecting to your REST services*.
 
-Let's create a fixture that will respond to our requests for menu item data. We want to keep our fixtures separate from our models (in a real world application, we would remove the fixtures once the services were available) Create another file in the models folder called "fixtures.js". Add the following code to that file:
+Let's create a fixture that will respond to our requests for menu item data. Create another file in the models folder called "fixtures.js". Add the following code to that file:
 
 	/**
      * Restaurants Model Fixture
@@ -71,7 +71,7 @@ Let's create a fixture that will respond to our requests for menu item data. We 
         ];
     });
 
-The first argument to can.fixture, "GET /restaurants", tells CanJS to intercept any GET requests to the resource "/restaurants". The second argument is a function that returns the data we want to return when the application makes a service call. Because we're simulating a findAll method, we need to return an array. The findAll method expects an array. If it does not receive one, it will throw an error.
+The first argument to can.fixture, "GET /restaurants", tells CanJS to intercept any GET requests to the resource "/restaurants". The second argument is a function that returns the data we want to get when the application makes a service call. Because we're simulating a findAll method, we need to return an array. The findAll method expects an array. By default, if it does not receive one, it will throw an error. If you need to connect to services that return data that doesn't match the expected return type of the findXxx methods, don't fret. There are ways to manage this, which we'll work with later on.
 
 ##Connecting the Model to the Component
 
@@ -97,7 +97,7 @@ Note that there are a few ways to call a findAll method on a can.Model. The firs
 			//
 		});
 
-In the code above, however, we called the findAll method indirectly. We did it in this line:
+In the code above, however, we called the findAll method indirectly:
 
 	restaurants: new RestaurantModel.List({}),
 
@@ -107,6 +107,7 @@ We'll look at the can.Model's findOne method later on, when we create our Menu C
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
     <script src="libs/can.custom.js"></script>
+    <script src="//canjs.com/release/2.1.4/can.fixture.js"></script>
     <!--Begin add-->
     <script src="models/fixtures.js"></script>
     <script src="models/site_models.js"></script>

@@ -2,40 +2,43 @@
 Now that we know how to create a basic can.Component, let's look at making the Component a bit more useable. Let's build out the can.Component's template.
 
 ##Stache Templates
-As mentioned previously, we're using Stache templates in our app. Remember that when we downloaded our custom build of CanJS, we included the can.stache plugin [^can.stache]. The CanJS docs tell us that, "Stache templates look similar to normal HTML, except they contain *keys* for inserting data into the template, and *Sections* to *enumerate and/or filter* the enclosed template blocks."
+As mentioned previously, we're using Stache templates in our app. Remember that when we downloaded our custom build of CanJS, we included the can.stache plugin [^can.stache]. The CanJS docs tell us that, "Stache templates look similar to normal HTML, except they contain *keys* for inserting data into the template, and *Sections* to *enumerate and/or filter* the enclosed template blocks." They can also contain limited *conditional logic* to show or hide content.
 
 [^can.stache]: In future releases of CanJS, 3.0 and above, the can.stache plugin will be included in the core CanJS library.
 
-There are four aspects of Stache templates, mentioned above, that we'll review:
+There are five aspects of Stache templates, mentioned above, that we'll review:
 
 - keys,
 - sections,
-- enumerate and
-- filter
+- enumerate,
+- filter, and
+- conditional logic
 
 It will be easiest for us to look at these with an example, so let's create one. Open up your /components/restaurant_list/restaurant_list.stache file. Edit it, as follows:
 
 	<label for="RestaurantList">Select a Restaurant:</label>
-    	<select id="RestaurantList">
-        	<option value="-1"></option>
-        	{{#each restaurants}}
-        	<option {{data 'restaurant'}}>{{name}}</option>
-        	{{/each}}
+    <select id="RestaurantList">
+        <option value="-1"></option>
+        {{#each restaurants}}
+            <option {{data 'restaurant'}}>{{name}}</option>
+        {{/each}}
     </select>
 
-    {{#currentRestaurant}}
-    <div id="CurrentRestaurant">
+    {{#if currentRestaurant}}
+        {{#currentRestaurant}}
+            <div id="current-restaurant">
 
-        <h3 id="RestaurantName">{{name}}</h3>
-        <ul id="RestaurantDetails">
-            <li>Location: {{location}}</li>
-            <li>Cuisine: {{cuisine}}</li>
-            <li>Owner: {{owner}}</li>
-        </ul>
-    </div>
+                <h3 id="restaurant-name">{{name}}</h3>
+                <ul id="restaurant-details">
+                    <li>Location: {{location}}</li>
+                    <li>Cuisine: {{cuisine}}</li>
+                    <li>Owner: {{owner}}</li>
+                </ul>
+            </div>
 
-    <button id="PlaceAnOrder">Place an Order from {{name}}</button>
-    {{/currentRestaurant}}
+            <button id="place-order">Place an Order from {{name}}</button>
+        {{/currentRestaurant}}
+    {{/if}}
 
 Stache templates support both [Mustache](https://github.com/janl/mustache.js/) and [Handlebar](http://handlebarsjs.com/) template formats. For more information on the details of these formats, see the respective websites.
 
@@ -49,15 +52,18 @@ You may have noticed a special key in the option tag. It looked like this:
 This is a data key. In brief, the data key allows you to access the data you assign it using jQuery's [$.data()](http://api.jquery.com/data/) method. In the example above, we're assigning individual restaurant objects to the option tag, as we [enumerate](#stache-enumeration) the collection of restaurants.
 
 ###Enumeration <a name="stache-enumeration"></a>
-Enumerating means that you can loop through the contents of an iterable item. We've done this above for the options in our select dropdown. 
+Enumerating means that you can loop through the contents of an iterable item. We've done this above for the options in our select dropdown. The {{#each _ _ _}} ... {{/each}} tag set is used to enumerate over an enumerable collection, such as an array. In the example above, we are enumerating over an array of objects. As with Sections, below, the properties of the objects we are enumerating over are accessible from data keys inside the `#each` scope without dot notation.
 
 ###Filtering
-Filtering allows you to display selective data. Given an array of people, for example, you can display all of the people whose first names begin with the letter "A". We won't explore filtering, right now, as that's a more advanced feature. 
+Filtering allows you to display selective data. Given an array of people, for example, you can display all of the people whose first names begin with the letter "A". We won't explore filtering right now, as that's a more advanced feature.
 
 ###Sections
-Finally, the "Sections" referred to in the quote are execution blocks---they define an object context within which we can work with an object and its properties. Including a Section in a template reduces the amount of typing you are required to do, and reduces the possibility for error as well. The example above contains a Section, the "MenuText" section. Sections begin with {{#...}} and end with {{/...}}. 
+Finally, sections are execution blocks. They define an object context within which we can access an object's properties without having to use dot notation. Including a Section in a template reduces the amount of typing you are required to do, and reduces the possibility for error as well. The example above contains a Section, the "MenuText" section. Sections begin with {{#...}} and end with {{/...}}.
 
-The Section key should map to an object. All of the keys contained in the Section object can be referenced without having to use dot notation. If we hadn't used a Section, for example, we would have had to write {{MenuText.Restaurants}} for our key. Because we used a section, however, we only have to write {{Restaurants}}, and Stache does the rest for us. 
+The Section key should map to an object. All of the keys contained in the Section object can be referenced without having to use dot notation. If we hadn't used a Section, for example, we would have had to write {{MenuText.Restaurants}} for our key. Because we used a section, however, we only have to write {{Restaurants}}, and Stache does the rest for us.
+
+###Conditional Logic
+Stache templates have a limited capacity for conditional logic. You can use {{#if _ _ _}} ... {{/if}} tags to conditinally display contents. This becomes very useful when you want to show or hide a component, for example.
 
 ##Event Handling
 
@@ -70,7 +76,7 @@ Let's work with an example. You can add event handling to any element in the tem
 
 	<select id="RestaurantList" can-change="restaurantSelected">
 
-We added an onChange event by adding the "can-change" attribute to the select tag. The value of that attribute maps to a property on the can.Component's scope.
+We added an onChange event by adding the `can-change` attribute to the select tag. The value of that attribute maps to a property on the can.Component's scope.
 
 Open up restaurant_list_component.js, and modify the scope as follows:
 
@@ -101,7 +107,7 @@ You can place as many event handlers as you need on an element. If we wanted to 
 And, then add the appropriate event handler to our scope.
 
 ##Getting and Setting Scope Properties
-Now that you know how to handle events in your code, it's important to understand how to get and set the properties of the scope. Getting and setting are done through the "attr" method off of the "this" keyword. Let's look at an example.
+Now that you know how to handle events in your code, it's important to understand how to get and set the properties of the scope. Getting and setting are done through the `attr` method off of the `this` keyword. Let's look at an example.
 
 Open up restaurant_list_component.js, and modify the scope's restaurantSelected property as follows:
 
@@ -112,7 +118,7 @@ Open up restaurant_list_component.js, and modify the scope's restaurantSelected 
             alert(this.attr(currentRestaurant).name);
         }
 
-The first line of the function uses the jQuery $.data() method we referred to earlier to get a reference to the selected restaurant object. The third line sets the currentRestaurant property of the scope to reference the selectedRestaurant. The last line gets a reference to the currentRestaurant property of the scope, and accesses the "name" property of the restaurant object it references.
+The first line of the function uses the jQuery `$.data()` method we referred to earlier to get a reference to the selected restaurant object. The third line sets the currentRestaurant property of the scope to reference the selectedRestaurant. The last line gets a reference to the currentRestaurant property of the scope, and accesses the "name" property of the restaurant object it references.
 
 Go out to the web application, and refresh your page; you'll notice a few things.
 
@@ -127,7 +133,7 @@ Next, you'll notice that when you select a restaurant from the list, the followi
 We set up the display of the current restaurant section earlier in the template. The default value for currentRestaurant, when the RestaurantListComponent is first loaded is 'undefined'. Setting the value to 'undefined' causes the Stache template to remove it from the DOM. As soon as we set currentRestaurant to a valid value, the scope, which is an observable can.Map, broadcasts this change, and the template refreshes automatically, rendering the current restaurant section.
 
 ##View Models
-It's considered a best practice to keep your can.Components thin. This helps maintain readability, and maintainability. One of the ways to accomplish this is to extract your scope from the can.Component, into a distinct View Model object. We do this by creating a can.Map.
+It's considered a best practice to keep your can.Components thin. This helps maintain readability, and maintainability. To accomplish, you extract your scope from the can.Component into a can.Map.
 
 Open up restaurant_list_component.js, and add the following code:
 
@@ -142,7 +148,7 @@ Open up restaurant_list_component.js, and add the following code:
 	});
 
 
-We assign the can.Map we created to the scope of the Restaurant List can.Component, as follows:
+Now, assign the can.Map we created to the scope of the Restaurant List can.Component, as follows:
 
 	can.Component.extend({
     	tag: 'restaurant-list',

@@ -66,14 +66,14 @@ Note that, after we initialized our routes, updating the value of our Applicatio
 Let's see what happens if we adjust the value of the hash. To monitor this change, we'll need to make a slight adjustment to our Application State object. Modify the restaurant property as follows:
 
 	restaurant: {
-                value: {},
-                set: function(newValue){
-                   if(typeof newValue === 'string'){
-                       alert(newValue);
-                   }
-                   return newValue;
-                }
-            },
+        value: {},
+        set: function(newValue){
+           if(typeof newValue === 'string'){
+               alert(newValue);
+           }
+           return newValue;
+        }
+    },
 
 Refresh your app in the browser. The first thing you should notice is that you get an alert box (or two) with the word "Spago" in it. By adding the set function above, we're controlling what happens when the Application State's restaurant property is set. More on that later. Click OK on the alert, go to the browser's URL bar, change the URL as follows:
 
@@ -107,14 +107,20 @@ Let's update our components to communicate with our Application State.
 Open up the restaurant_list_component.js file, and edit it as follows;
 
 	var RestaurantListViewModel = can.Map.extend({
-    	define: {
+        define: {
             currentRestaurant: {
+                value: {}
+            },
+            currentRestaurantIndex: {
                 value: {},
                 type: 'number',
-                set: function (newValue) {
-                    return isNaN(newValue) ? newValue : this.attr('restaurants')[(newValue - 1)];
+                set: function(newValue){
+                    if(!isNaN(newValue)){
+                        this.attr('currentRestaurant', this.attr('restaurants')[newValue]);
+                    }
+                    return newValue;
                 }
-        	}
+            }
         },
         init: function () {
             this.attr('restaurants', new RestaurantModel.List({}));
@@ -124,50 +130,41 @@ Open up the restaurant_list_component.js file, and edit it as follows;
         },
         showMenu: function () {
             //Sets the restaurant value on the parent scope (AppState)
-            this.attr('restaurant', this.currentRestaurant);
+            this.attr('restaurant', this.attr('currentRestaurant'));
         }
 
-	});
+    });
 
-	can.Component.extend({
+    can.Component.extend({
+
         tag: 'restaurant-list',
         template: can.view('components/restaurant_list/restaurant_list.stache'),
         scope: RestaurantListViewModel
-	});
 
-Note the showMenu function. From this function we access the "restaurant" value that was passed in to the can.Component's custom HTML tag.
+    });
+
+Note the showMenu function. From this function we update the "restaurant" value that was passed in to the can.Component's custom HTML tag. Additionally, we've added a `define` attribute. The define attribute is used to control the behavior of attributes on a can.Component. We'll go into detail on `define` in the next chapter.
 
 Next, open up restaurant_list.stache, and link the PlaceOrder button with the showMenu function we've defined, as follows:
 
 	 <button id="PlaceAnOrder" can-click="showMenu">Place an Order from {{name}}</button>
 
-We've removed the DOM code from our View Model, and are now working directly with the application, so we need to update our view template to reflect these changes. In the same file (restaurant_list.stache), update template as follows ():
+We've removed the DOM code from our View Model, and are now working directly with the application, so we need to update our view template to reflect these changes. In the same file (restaurant_list.stache), update the select dropdown in the template as follows ():
 
     {{#visible}}
         <label for="RestaurantList">Select a Restaurant:</label>
         <select id="RestaurantList" can-value="currentRestaurant">
             <option value="-1"></option>
             {{#each restaurants}}
-                <option value="{{restaurantId}}">{{name}}</option>
+                <option value="{{@index}}">{{name}}</option>
             {{/each}}
         </select>
 
-        {{#if currentRestaurant}}
-            {{#currentRestaurant}}
-                <div id="CurrentRestaurant">
+        ...
 
-                    <h3 id="RestaurantName">{{name}}</h3>
-                    <ul id="RestaurantDetails">
-                        <li>Location: {{location}}</li>
-                        <li>Cuisine: {{cuisine}}</li>
-                        <li>Owner: {{owner}}</li>
-                    </ul>
-                </div>
+What we've done above is to make a connection between the index of the select dropdown, and the index of the restaurants list in the can.Component's scope. Whenever the currentRestaurantIndex is updated, its `set` function is called. In its `set` function, it updates the currentRestaurant property.
 
-                <button id="PlaceAnOrder" can-click="showMenu">Place an Order from {{name}}</button>
-            {{/currentRestaurant}}
-        {{/if}}
-	{{/visible}}
+![](images/7_application_state_routing/SelectMapping.png)
 
 Now, refresh your application, select a restaurant from the list, and click the place order button. You should see something like the following:
 
@@ -186,21 +183,12 @@ Now that we can see the connection between the component, and the Application St
                 value: {},
                 set: function (restaurant) {
                     if (restaurant.restaurantId) {
-                        var that = this;
-                        RestaurantMenusModel.findOne({id: restaurant.restaurantId},
-                            function success(selectedMenus) {
-                                that.attr('menus', {
-                                    collection: selectedMenus.menus,
-                                    restaurantName: restaurant.name
-                                });
-                            },
-                            function error(xhr) {
-                                alert(xhr.message);
-                            });
+                        this.attr('menus', new RestaurantMenusModel.List({id: restaurant.restaurantId}));
+                        this.attr('restaurantName', restaurant.name);
                     }
                     return restaurant;
                 }
-            },
+            },,
             ...
 
 This will be a very common pattern in your applications. This setter is our event handler. Any time a restaurant is selected (i.e., the Application State's restaurant property is updated), we obtain its menus from our service, and then update the Application State's menus attribute.
@@ -208,11 +196,24 @@ This will be a very common pattern in your applications. This setter is our even
 To make the OrderForm component show, and the RestaurantList component hide, we use conditional stache tags in base_template.stache, as below:
 
 	{{#if menus}}
-        <order-form menus="{menus}" confirmation="{confirmation}"></order-form>
+        <order-form menus="{menus}" restaurantName="{restaurantName}" confirmation="{confirmation}"></order-form>
     {{else}}
         <restaurant-list restaurant="{restaurant}"></restaurant-list>
     {{/if}}
 
-When there Application State's menus attribute has a value, the order form is displayed. Otherwise, the restaurant list is displayed. To see this in action, select a restaurant from the list, and click the "Place an Order from ____" button. You should see something like this:
+Finally, open order_form_component.js, and edit it as follows:
+
+	var OrderFormViewModel = can.Map.extend({
+        init: function () {
+            this.attr('delivery', {});
+            this.attr('order', {});
+            this.attr('issues', {});
+            //--> Remove the hard-coded reference to "Spago"
+            //    This is now passed in from the Application State
+            this.attr('menus', new RestaurantMenusModel.List({id: 1}));
+        },
+        ...
+
+When the Application State's menus attribute has a value, the order form is displayed. Otherwise, the restaurant list is displayed. To see this in action, select a restaurant from the list, and click the "Place an Order from ____" button. You should see something like this:
 
 ![](images/7_application_state_routing/OrderFormDisplayed.png)

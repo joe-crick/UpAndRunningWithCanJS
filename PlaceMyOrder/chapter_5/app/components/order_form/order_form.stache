@@ -12,10 +12,9 @@
 
 {{/each}}
 
-
 {{#delivery}}
 
-    <div id="customer-details">
+    <div id="CustomerDetails">
         <label>Name:
             <input type="text" can-value="name" id="name"/>
 

@@ -1,10 +1,10 @@
 #Application Foundations <a name="app-foundations"></a>
 
-The first step in putting together a CanJS app is sketching out the various states of your application, as you understand them at the moment[^requirements], and any supporting elements you might need. 
+The first step in putting together a CanJS app is sketching out the various states of your application, as you understand them at the moment[^requirements], and any supporting elements you might need.
 
 [^requirements]: Requirements are always subject to change!
 
-We’ll be building a small application called "PlaceMyOrder". PlaceMyOrder is a website that lets you select from available restaurants in your area, view their menus, and purchase menu items for delivery. For this sample application, we’ll keep things pretty simple. We won’t worry about registration, authentication, or payment processing. We’re just going to create an application with three states:
+We’ll be building a small application called "PlaceMyOrder". PlaceMyOrder is a website that lets you select from available restaurants in your area, view their menus, and purchase items for delivery. For this sample application, we’ll keep things pretty simple. We won’t worry about registration, authentication, or payment processing. We’re just going to create an application with three states:
 
 1. Restaurant
 2. Order Form
@@ -47,13 +47,14 @@ It should look like this:
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
     <script src="libs/can.custom.js"></script>
+    <script src="//canjs.com/release/2.1.4/can.fixture.js"></script>
 	<script src="app.js"></script>
     </body>
     </html>
 
-To simplify things, we're using Bootstrap for our CSS; however Bootstrap is not required to use CanJS.
-
 At the bottom of the page, just before the body tag, are all of the script tags. We're using the jQuery edition of CanJS, so the first script tag loaded must be jQuery. Following jQuery, we load can.custom.js.
+
+In the last chapter, we mentioned including can.fixture.js. We do that in the script tag just below can.custom.js, downloading it from the CDN. In a normal project, once you connect to the actual REST services, you would remove can.fixture.js. In addition, to simplify things, we're using Bootstrap for our CSS; however Bootstrap is not required to use CanJS.
 
 ####Base Template
 Create a file in the app folder called "base_template.stache". We'll edit the contents of that file as we build out our application. For now, you can leave it blank.
