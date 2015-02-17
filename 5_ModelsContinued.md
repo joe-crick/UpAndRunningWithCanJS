@@ -126,8 +126,18 @@ We assign the value of this.attr('details') to the MenuOrderModel's delivery pro
 ###Moving from DOM to the model
 When we created the RestaurantListComponent, we used the {{data '...'}} Stache key, and jQuery to obtain a reference to the restaurant object associated with the choice the user selected in the restaurants dropdown. Ideally, we don't want to be interacting with the DOM directly in our application. We want CanJS to do that for us, so we can focus on the application itself. In the createOrder function, instead of getting our data from the DOM, we get it from our scope.
 
+###Save fixture
+Open up fixtures.js (in the models folder), and add the following fixture:
+
+	/**
+     * Order Fixture
+     */
+    can.fixture('POST /order', function requestHandler(){
+        return true;
+    });
+
 ##Non-standard Data Sources
-In the models folder, edit fixtures.js, appending the following to the bottom of the file:
+Staying in fixtures.js, append the following to the bottom of the file:
 
 	/**
      * Restaurant Menus Fixture
