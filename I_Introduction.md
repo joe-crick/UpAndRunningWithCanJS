@@ -31,8 +31,10 @@ While you can use any of the above template types, the preferred type is "Stache
 
 Template libraries require a rendering engine, and CanJS provides that to you with the can.view object. To quote the CanJS docs: A can.view contains utilities "for loading, processing, rendering, and live-updating of templates". In addition, can.view is used to bind views to observable objects.
 
+> The secret to building large applications is to never build large applications.
+
 ###Components
-A can.Component is kind of like a mini web application. A can.Component contains the CSS, JavaScript, and HTML it needs---all wrapped up in a single, functional unit. This makes can.Components portable, reusable, and encapsulated. can.Components are easy to test, and easy to use. Building an application with them is kind of like building with Legos&trade;: You build the components you need to create your site, and you link them all together using the [Application State](#app-state) and [Routing](#routing).
+A can.Component is kind of like a mini web application. A can.Component contains the CSS, JavaScript, and HTML it needs---all wrapped up in a single, functional unit. This makes can.Components portable, reusable, and encapsulated. can.Components are easy to test, and easy to use. Building an application with them is kind of like building with Legos&trade;. As we say at Bitovi, "The secret to building large applications is to never build large applications". Rather, you build the components you need, and link them together using the Application State and Routing to compose your application.
 
 ###Application State
 One of the things that sets CanJS apart from other frameworks is its use of an Application State. An Application State is an observable object that, as its name implies, contains the state of your application. Where other application frameworks model their applications with routes, controllers, &c., CanJS takes a more unified, semantic approach. It encapsulates the state of your application in an object. This is a pretty powerful approach to writing applications---freeing developers from many of the constraints of a DOM-centric paradigm to think more directly about the application itself.
