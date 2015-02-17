@@ -75,7 +75,7 @@ Add the following to order_form_component.js:
             this.attr('menus', new RestaurantMenusModel.List({id: 1}));
         },
         createOrder: function (menuItems) {
-            this.attr('menus.collection').each(function (itemSet) {
+            this.attr('menus').each(function (itemSet) {
                 itemSet.attr('items').each(function (item) {
                     if (item.attr('selected')) {
                         menuItems.push(item);
