@@ -78,7 +78,7 @@ At this point, you should be able to run a successful build. Open up your Node t
 If the build is successful, a dist folder will be added to your app folder, and it will contain two files:
 
 - app
-    - dist'
+    - dist
         - PlaceMyOrder.js
         - PlaceMyOrderProduction.min.js
 
