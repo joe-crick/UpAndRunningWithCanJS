@@ -1,5 +1,14 @@
 #Application Foundations <a name="app-foundations"></a>
 
+- - -
+>**In this Chapter**
+> - Application Overview
+> - Page Chrome
+> - Base View Template
+> - Applicaiton Bootstrap
+
+- - -
+
 The first step in putting together a CanJS app is sketching out the various states of your application, as you understand them at the moment[^requirements], and any supporting elements you might need.
 
 [^requirements]: Requirements are always subject to change!
@@ -74,4 +83,4 @@ If you open up your application in a browser, you should see:
 
 At this point, we haven't done much. We aren't using CanJS at all yet. We're just using jQuery to set the HTML contents of a DOM element.
 
-So, how do we get the application to actually *do something*? Building apps with CanJS centers around building can.Components, read on to the [next chapter](#FirstComponent.md) to learn more.
+So, how do we get the application to actually *do something*? Building apps with CanJS centers around building can.Components, read on to the next chapter to learn more.

@@ -1,7 +1,7 @@
 #Up and Running with CanJS <a name="introduction"></a>
 *Better Apps, Faster*
 
-CanJS is a lightweight, modern JavaScript MVVM framework that's fast and easy to use, while remaining robust and extensible enough to power some of the most trafficked websites in the world. To see just how simple it is to get an application up and running using CanJS, we'll develop one together.
+CanJS is a lightweight, modern JavaScript [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel) framework that's fast and easy to use, while remaining robust and extensible enough to power some of the most trafficked websites in the world. To see just how simple it is to get an application up and running using CanJS, we'll develop one together.
 
 ##The Basics
 Every CanJS application contains:
@@ -11,9 +11,6 @@ Every CanJS application contains:
 - Components,
 - Application State, and
 - Routing
-
-###Application State
-One of the things that sets CanJS apart from other frameworks is its use of an Application State. An Application State is an observable object that, as its name implies, contains the state of your application. Where other application frameworks model their applications with routes, controllers, &c., CanJS takes a more unified, semantic approach. It encapsulates the state of your application in an object. This is a pretty powerful approach to writing applications---freeing developers from many of the constraints of a DOM-centric paradigm to think more directly about the application itself.
 
 ###Models
 Models manage the data of an application. A model notifies the elements associated with it when its state has changed. In CanJS this is the can.Model object. can.Model handles all of your CRUD operations (Create, Read, Update, and Delete). They can also provide validation for your data, as well---serving as a single source for handling your data acquisition, and managing its integrity.
@@ -36,6 +33,9 @@ Template libraries require a rendering engine, and CanJS provides that to you wi
 
 ###Components
 A can.Component is kind of like a mini web application. A can.Component contains the CSS, JavaScript, and HTML it needs---all wrapped up in a single, functional unit. This makes can.Components portable, reusable, and encapsulated. can.Components are easy to test, and easy to use. Building an application with them is kind of like building with Legos&trade;: You build the components you need to create your site, and you link them all together using the [Application State](#app-state) and [Routing](#routing).
+
+###Application State
+One of the things that sets CanJS apart from other frameworks is its use of an Application State. An Application State is an observable object that, as its name implies, contains the state of your application. Where other application frameworks model their applications with routes, controllers, &c., CanJS takes a more unified, semantic approach. It encapsulates the state of your application in an object. This is a pretty powerful approach to writing applications---freeing developers from many of the constraints of a DOM-centric paradigm to think more directly about the application itself.
 
 ###Routing
 For many JS MV* frameworks, routing divides an application into logical views and binds those view to Controllers. *This is not how things work in CanJS*. Routing in CanJS has nothing to do with binding views to Controllers. Rather, it has to do with [Application State](#app-state). In brief, CanJS maintains a reciprocal relationship between an application's route, and its state. In other words, if you change the state of an application, your route will change. If you change your route, your application's state will change.

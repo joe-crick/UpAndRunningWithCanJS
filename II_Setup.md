@@ -1,5 +1,12 @@
 # Setup <a name="setup"></a>
 
+- - -
+>**In this Chapter**
+> - Configuring and Downloading CanJS
+> - Recommended folder structure
+
+- - -
+
 To begin, we'll make sure we have everything we need to make our application. The first thing to do is get CanJS. The easiest way to get CanJS is to use the [custom downloader](http://canjs.com/download.html), which allows you to download the specific parts of CanJS you need for your application.
 
 The custom download page loads with all the elements in the core CanJS library already selected. We want all of those in our build, so leave them checked. CanJS relies on an external core library for some of its functionality. There are several options available (jQuery, Dojo, YUI, &c.). The default option is jQuery, and that's what we'll be working with here.

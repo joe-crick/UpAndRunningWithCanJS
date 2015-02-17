@@ -1,5 +1,13 @@
 #Sending Data to a Service, and Non-standard Data Formats
 
+- - - -
+>**In this Chapter**
+> - Saving and Updating a can.Model
+> - Moving Closer to MVVM
+> - Working with Non-standard Data Formats
+
+- - -
+
 To illustrate sending data to a service, let's create an order menu from which people can select items.
 
 Create a sub folder under components called "order_form". In the order_form folder, create the following files:
@@ -113,7 +121,7 @@ Let's look at a few items in the code above. Notice that we're creating a new in
 
 We assign the value of this.attr('details') to the MenuOrderModel's delivery property. If you recall, we bound the values of the name, address, and telephone number fields to the "delivery" object in the order_form.stache view template. Now, all we need to do to get the values of those fields is reference them off of the View Model's delivery property.
 
-##Moving from DOM to the model
+###Moving from DOM to the model
 When we created the RestaurantListComponent, we used the {{data '...'}} Stache key, and jQuery to obtain a reference to the restaurant object associated with the choice the user selected in the restaurants dropdown. Ideally, we don't want to be interacting with the DOM directly in our application. We want CanJS to do that for us, so we can focus on the application itself. In the createOrder function, instead of getting our data from the DOM, we get it from our scope.
 
 ##Non-standard Data Sources

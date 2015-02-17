@@ -1,4 +1,4 @@
-var MenuViewModel = can.Map.extend({
+var SiteMenuViewModel = can.Map.extend({
     init: function () {
         this.attr('menuData', {});
     }
@@ -7,7 +7,7 @@ var MenuViewModel = can.Map.extend({
 can.Component.extend({
     tag: "menu",
     template: can.view('components/site_menu/site_menu.stache'),
-    scope: MenuViewModel,
+    scope: SiteMenuViewModel,
     events: {
         inserted: function () {
             var siteMenuViewModel = this.scope;

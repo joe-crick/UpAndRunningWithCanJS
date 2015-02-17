@@ -1,4 +1,14 @@
-# Diving Deeper into can.Component <a name="more-component"></a>
+# Diving Deeper into can.Component
+
+- - - -
+>**In this Chapter**
+> - Stache Templates
+> - Event Handling
+> - Getting and Setting Scope Properties
+> - View Models
+
+- - -
+
 Now that we know how to create a basic can.Component, let's look at making the Component a bit more useable. Let's build out the can.Component's template.
 
 ##Stache Templates
