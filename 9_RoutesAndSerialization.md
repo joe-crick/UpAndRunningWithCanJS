@@ -6,6 +6,8 @@
  - Serialization
  - Creating Anchor Tags with can.route.link
 
+> Get the code for: [chapter 9](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_9) - (*This is the completed application*).
+
 - - -
 
 As mentioned earlier, each property you define on an Application State will serialize to a route by default when you bind that Application State with can.route, using can.route.map(). In our current Application State, that means we will have default routes for:

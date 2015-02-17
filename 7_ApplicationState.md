@@ -6,6 +6,8 @@
  - Basic Routing
  - Binding the Application State Object to the Application and Routes
 
+> Get the code for: [chapter 7](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_8)
+
 - - -
 
 As mentioned in the [introduction](#introduction), CanJS uses an Application State object to manage the state of your application. The application state object is bound to two things:

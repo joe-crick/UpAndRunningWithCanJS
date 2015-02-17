@@ -7,6 +7,8 @@
  - Getting and Setting Scope Properties
  - View Models
 
+> Get the code for: [chapter 3](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_3)
+
 - - -
 
 Now that we know how to create a basic can.Component, let's look at making the Component a bit more useable. Let's build out the can.Component's template.

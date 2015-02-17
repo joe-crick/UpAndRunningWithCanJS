@@ -4,6 +4,8 @@
 **In this Chapter**
  - The Define Plugin
 
+> *There is no code to download for this chapter*
+
 - - -
 
 The Application State object we created in the last chapter was a can.Map. Here it is, again, below:

@@ -6,6 +6,8 @@
  - Moving Closer to MVVM
  - Working with Non-standard Data Formats
 
+> Get the code for: [chapter 5](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_5)
+
 - - -
 
 To illustrate sending data to a service, let's create an order menu from which people can select items.

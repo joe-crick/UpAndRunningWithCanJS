@@ -4,6 +4,8 @@
 **In this Chapter**
  - Create the Site Menu can.Component
 
+> Get the code for: [chapter 6](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_6)
+
 - - -
 
 We should know enough at this point to successfully create our Menu component. Going through the steps will be a good review of what we've covered so far, and help you solidify your understanding of CanJS. We'll also cover some additional functionality from the objects we already know, such as the findOne method of can.Model.

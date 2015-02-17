@@ -6,6 +6,8 @@
  - can.fixture
  - Connecting can.Models with can.Components
 
+> Get the code for: [chapter 4](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_4)
+
 - - -
 
 The next item we're going to go over is can.Model. Models make interacting with JSON REST services *really easy*. They do this by encapsulating most of the code required to connect to a service, and managing the data the service returns. Additionally, can.Model extends can.Map, meaning that the objects returned have all of the features of a can.Map, such as being observable.

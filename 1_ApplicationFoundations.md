@@ -7,6 +7,8 @@
  - Base View Template
  - Applicaiton Bootstrap
 
+> Get the code for: [chapter 1](https://github.com/joe-crick/UpAndRunningWithCanJS/tree/master/PlaceMyOrder/chapter_1)
+
 - - -
 
 The first step in putting together a CanJS app is sketching out the various states of your application, as you understand them at the moment[^requirements], and any supporting elements you might need.
