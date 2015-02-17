@@ -1,4 +1,13 @@
 #Routing Continued: Route Formatting & Serialization
+
+- - -
+>**In this Chapter**
+> - Route Formatting
+> - Serialization
+> - Creating Anchor Tags with can.route.link
+
+- - -
+
 As mentioned earlier, each property you define on an Application State will serialize to a route by default when you bind that Application State with can.route, using can.route.map(). In our current Application State, that means we will have default routes for:
 
 - restaurant

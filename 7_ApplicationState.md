@@ -1,4 +1,13 @@
-#Application State, and Basic Routing <a name="application-state-basic"></a>
+#Application State, and Basic Routing
+
+- - -
+>**In this Chapter**
+> - Application State
+> - Basic Routing
+> - Binding the Application State Object to the Application and Routes
+
+- - -
+
 As mentioned in the [introduction](#introduction), CanJS uses an Application State object to manage the state of your application. The application state object is bound to two things:
 
 1. The application's base template

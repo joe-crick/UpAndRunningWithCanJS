@@ -1,4 +1,11 @@
 #Reinforcing Concepts: Creating the Menu Component
+
+- - - -
+>**In this Chapter**
+> - Create the Site Menu can.Component
+
+- - -
+
 We should know enough at this point to successfully create our Menu component. Going through the steps will be a good review of what we've covered so far, and help you solidify your understanding of CanJS. We'll also cover some additional functionality from the objects we already know, such as the findOne method of can.Model.
 
 In your models folder, open fixtures.js. Add the following code to register a new can.fixture:
@@ -22,7 +29,7 @@ Open up site_models.js, and add a new can.Model:
 
 In your components folder, create a new folder called "site_menu". In that folder, file called site_menu_component.js, and add the following code:
 
-	var MenuViewModel = can.Map.extend({
+	var SiteMenuViewModel = can.Map.extend({
         init: function () {
             this.attr('menuData', {});
         }
