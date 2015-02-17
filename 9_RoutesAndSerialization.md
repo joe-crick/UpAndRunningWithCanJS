@@ -1,10 +1,10 @@
 #Routing Continued: Route Formatting & Serialization
 
 - - -
->**In this Chapter**
-> - Route Formatting
-> - Serialization
-> - Creating Anchor Tags with can.route.link
+**In this Chapter**
+ - Route Formatting
+ - Serialization
+ - Creating Anchor Tags with can.route.link
 
 - - -
 

@@ -1,10 +1,10 @@
 #Sending Data to a Service, and Non-standard Data Formats
 
 - - - -
->**In this Chapter**
-> - Saving and Updating a can.Model
-> - Moving Closer to MVVM
-> - Working with Non-standard Data Formats
+**In this Chapter**
+ - Saving and Updating a can.Model
+ - Moving Closer to MVVM
+ - Working with Non-standard Data Formats
 
 - - -
 

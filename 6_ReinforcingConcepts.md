@@ -1,8 +1,8 @@
 #Reinforcing Concepts: Creating the Menu Component
 
 - - - -
->**In this Chapter**
-> - Create the Site Menu can.Component
+**In this Chapter**
+ - Create the Site Menu can.Component
 
 - - -
 

@@ -1,9 +1,9 @@
 # Setup <a name="setup"></a>
 
 - - -
->**In this Chapter**
-> - Configuring and Downloading CanJS
-> - Recommended folder structure
+**In this Chapter**
+ - Configuring and Downloading CanJS
+ - Recommended folder structure
 
 - - -
 

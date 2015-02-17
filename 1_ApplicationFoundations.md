@@ -1,11 +1,11 @@
 #Application Foundations <a name="app-foundations"></a>
 
 - - -
->**In this Chapter**
-> - Application Overview
-> - Page Chrome
-> - Base View Template
-> - Applicaiton Bootstrap
+**In this Chapter**
+ - Application Overview
+ - Page Chrome
+ - Base View Template
+ - Applicaiton Bootstrap
 
 - - -
 

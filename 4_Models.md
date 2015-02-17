@@ -1,10 +1,10 @@
 # Models (&amp; Fixtures)
 
 - - - -
->**In this Chapter**
-> - can.Model
-> - can.fixture
-> - Connecting can.Models with can.Components
+**In this Chapter**
+ - can.Model
+ - can.fixture
+ - Connecting can.Models with can.Components
 
 - - -
 

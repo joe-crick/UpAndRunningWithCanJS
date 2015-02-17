@@ -1,8 +1,8 @@
 #Application State Continued: The Define Plugin
 
 - - -
->**In this Chapter**
-> - The Define Plugin
+**In this Chapter**
+ - The Define Plugin
 
 - - -
 

@@ -1,11 +1,11 @@
 # Diving Deeper into can.Component
 
 - - - -
->**In this Chapter**
-> - Stache Templates
-> - Event Handling
-> - Getting and Setting Scope Properties
-> - View Models
+**In this Chapter**
+ - Stache Templates
+ - Event Handling
+ - Getting and Setting Scope Properties
+ - View Models
 
 - - -
 

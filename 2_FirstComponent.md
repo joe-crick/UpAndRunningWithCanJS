@@ -1,13 +1,13 @@
 #Getting to Know Components
 
 - - - -
->**In this Chapter**
-> - Constructors in CanJS
-> 	- The `extend` method
-> 	- The `init` method
-> - First can.Component
-> 	- Auto Instantiation
-> 	- Anatomy of a can.Component
+**In this Chapter**
+ - Constructors in CanJS
+ 	- The `extend` method
+ 	- The `init` method
+ - First can.Component
+ 	- Auto Instantiation
+ 	- Anatomy of a can.Component
 
 - - -
 
