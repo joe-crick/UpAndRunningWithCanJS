@@ -135,7 +135,6 @@ Open up the restaurant_list_component.js file, and edit it as follows;
         },
         init: function () {
             this.attr('restaurants', new RestaurantModel.List({}));
-            this.attr('currentRestaurant', {});
             this.attr('visible', true);
             this.attr('selected', {});
         },
