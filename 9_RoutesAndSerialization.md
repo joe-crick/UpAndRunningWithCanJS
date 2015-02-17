@@ -161,7 +161,7 @@ Finally, update the Application State object in app.js, as follows:
 
 Note, that we've refactored the call to RestaurantMenusModel out into its own function. Now, when you change the value of the restaurant in the URL, the menu changes as well.
 
-##Wrapping up
+##Creating Anchor Tags with can.route.link
 The last thing we need to do is add functionality to our Site Menu. Open up site_menu_component.js, and add the following method to MenuViewModel:
 
 	var MenuViewModel = can.Map.extend({

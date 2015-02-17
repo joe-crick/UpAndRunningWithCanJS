@@ -1,4 +1,4 @@
-#Application Foundations <a name="app-foundations"></a>
+#Application Foundations
 
 - - -
 **In this Chapter**

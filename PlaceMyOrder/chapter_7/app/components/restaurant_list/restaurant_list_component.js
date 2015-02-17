@@ -4,7 +4,7 @@
 var RestaurantListViewModel = can.Map.extend({
     define: {
         currentRestaurant: {
-            value: {}
+            value: null
         },
         currentRestaurantIndex: {
             value: {},
@@ -19,7 +19,6 @@ var RestaurantListViewModel = can.Map.extend({
     },
     init: function () {
         this.attr('restaurants', new RestaurantModel.List({}));
-        this.attr('currentRestaurant', {});
         this.attr('visible', true);
         this.attr('selected', {});
     },

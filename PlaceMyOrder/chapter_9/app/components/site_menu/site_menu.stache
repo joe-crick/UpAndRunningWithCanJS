@@ -11,8 +11,7 @@
     </ul>
 
     <ul id="lg-menu" class="nav hidden-xs">
-        <li class="active"><a can-click="goHome" href="#"><i class="glyphicon glyphicon-cutlery"></i> {{Restaurants}}
-        </a></li>
+        <li class="active"><i class="glyphicon glyphicon-cutlery"></i> {{homeLink}}</li>
     </ul>
 
 

@@ -18,7 +18,7 @@ Models manage the data of an application. A model notifies the elements associat
 ###Views
 Views request information from the model, and use the data it provides to generate visual output that's meaningful to a user---in our case HTML. In CanJS, views are created using:
 
-1. View Templates, 
+1. View Templates,
 2. The can.view object
 
 The view template can be plain HTML, or it can utilize a template library to provide it with more functionality. Most of the time, your views will work with a template library. CanJs supports several JS template libraries, including:
