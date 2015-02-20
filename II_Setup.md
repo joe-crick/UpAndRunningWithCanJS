@@ -13,11 +13,11 @@ The custom download page loads with all the elements in the core CanJS library a
 
 The right side of the page lists all of the plugins. From the list of plugins, select the following:
 
-![](images/setup/DownloadOptions.png)
+![CanJS plugins to select](images/setup/DownloadOptions.png)
 
 At the bottom of the page, click the download button. You'll be promoted to download a file called "can.custom.js". Save that file to your local machine.
 
-There is one additional file we need, which we won't download. This file is special. You normally wouldn't want it to be a part of your final application, but it can be very helpful during development. The file is can.fixture.js. can.fixture allows you to simlulate RESTful services. We'll cover how to include can.fixture in the next chapter.
+There is one additional file we need, which we won't download. This file is special. You normally wouldn't want it to be a part of your final application, but it can be very helpful during development. The file is can.fixture.js. can.fixture allows you to simulate RESTful services. We'll cover how to include can.fixture in the next chapter.
 
 In the next step, we'll set up the application's folder structure, and move the can.custom.js file into its appropriate folder in the app.
 
