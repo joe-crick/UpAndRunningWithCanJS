@@ -149,9 +149,9 @@ can.fixture("GET /menus/{id}", function requestHandler(request) {
 can.fixture("GET /site_menu", function requestHandler() {
     return {
         menuText: {
-            "PageTitle": "PlaceMyOrder.com",
-            "FoodAtFingertips": "Food at your Fingertips",
-            "Restaurants": "Restaurants",
+            "PageTitle": "Placemyorder.com",
+            "FoodAtFingertips": " Food at your Fingertips",
+            "Restaurants": " Restaurants",
             "Cuisines": "Cuisines"
         }
     };
