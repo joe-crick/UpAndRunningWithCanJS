@@ -1,7 +1,9 @@
 #Up and Running with CanJS <a name="introduction"></a>
 *Better Apps, Faster*
 
-CanJS is a lightweight, modern JavaScript [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel) framework that's fast and easy to use, while remaining robust and extensible enough to power some of the most trafficked websites in the world. To see just how simple it is to get an application up and running using CanJS, we'll develop one together.
+CanJS is a lightweight, modern JavaScript [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel) framework that's fast and easy to use, while remaining robust and extensible enough to power some of the most trafficked websites in the world. 
+
+This guide will walk you through the steps of building a small e-commerce app with CanJS... <!-- We should set the context for the rest of the guide because in Setup.md, "PlaceMyOrder" comes out of nowhere. Also, this should get the reader excited about what's to come -->
 
 ##The Basics
 Every CanJS application contains:
@@ -13,15 +15,15 @@ Every CanJS application contains:
 - Routing
 
 ###Models
-Models manage the data of an application. A model notifies the elements associated with it when its state has changed. In CanJS this is the can.Model object. can.Model handles all of your CRUD operations (Create, Read, Update, and Delete). They can also provide validation for your data, as well---serving as a single source for handling your data acquisition, and managing its integrity.
+Models provide an interface for getting data from a server. In CanJS this is the can.Model object. can.Model handles all of your CRUD operations (Create, Read, Update, and Delete). They can also provide validation for your data, as well---serving as a single source for handling your data acquisition, and managing its integrity.
 
 ###Views
-Views request information from the model, and use the data it provides to generate visual output that's meaningful to a user---in our case HTML. In CanJS, views are created using:
+Views define the UI of the application. In CanJS, views are created using:
 
-1. View Templates,
+1. A Template
 2. The can.view object
 
-The view template can be plain HTML, or it can utilize a template library to provide it with more functionality. Most of the time, your views will work with a template library. CanJs supports several JS template libraries, including:
+The template can be plain HTML, or it can utilize a template library to provide it with more functionality. CanJs supports several JS template libraries, including:
 
 - Stache
 - Mustache

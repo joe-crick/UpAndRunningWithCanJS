@@ -3,7 +3,7 @@
 - - -
 **In this Chapter**
  - Configuring and Downloading CanJS
- - Recommended folder structure
+ - Recommended directory structure
 
 - - -
 
@@ -19,19 +19,19 @@ At the bottom of the page, click the download button. You'll be promoted to down
 
 There is one additional file we need, which we won't download. This file is special. You normally wouldn't want it to be a part of your final application, but it can be very helpful during development. The file is can.fixture.js. can.fixture allows you to simulate RESTful services. We'll cover how to include can.fixture in the next chapter.
 
-In the next step, we'll set up the application's folder structure, and move the can.custom.js file into its appropriate folder in the app.
+In the next step, we'll set up the application's directory structure, and move the can.custom.js file into its appropriate folder in the app.
 
-##Folder Structure
+##Directory Structure
 
-A lot of frameworks recommend a structure that has separate JS, CSS, and HTML folders. When building a CanJS app, because our application will be built using components, we use a component-based folder structure. Off of a root folder called "PlaceMyOrder", create the following subfolders:
+A lot of frameworks recommend a structure that has separate JS, CSS, and HTML folders. When building a CanJS app, because our application will be built using components, we use a component-based directory structure. Off of a root folder called "PlaceMyOrder", create the following subfolders:
 
 - PlaceMyOrder
 
-	- app
+  - app
 
-        - components
-    	- models
-    	- site_css
-    	- libs
+    - components
+    - models
+    - site_css
+    - libs
 
 Copy the CSS file that accompanies this guide into your CSS folder. We won't be covering any of the CSS here. Next, copy the can.custom.js file you downloaded in the previous step into the "libs" folder.
