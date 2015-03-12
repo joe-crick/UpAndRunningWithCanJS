@@ -73,11 +73,15 @@ Finally, we need to add a reference to restaurant_list_component.js in the index
 
 Now, go back out to your app in the browser, and refresh it. You should see it printing: "Hello Restaurant Customer".
 
+#### Component tag names
+
+A component's tag name must contain a dash (-). So for example, `<x-tags>`, `<my-element>`, and `<my-awesome-app>` are all valid names, while `<tabs>` and `<foo_bar>` are not.
+
 ###Auto Instantiation
 
-If you recall from the discussion above regarding can.Construct, whenever you declare an object using can.Construct it must be instantiated. Normally, you would either directly instantiate objects using the `new` keyword, or pass the constructor to an object that would create instances of it. *can.Component is an exception*.
+Typically in an object oriented programming environment you instantiate objects using the `new` keyword, or pass the constructor to an object that would create instances of it. *can.Component is an exception*.
 
-All we have to do is declare the can.Component using its `extend` method.  Once you declare your can.Component, you've registered your component with the system. When CanJS parses the base_template.stache file, and encounters the "restaurant-list" tag, it will automatically instantiate the can.Component associated with it, generate the Component's view inside of its custom tag, and bind that view to your component's scope.
+All we have to do is declare the can.Component using its `extend` method.  By extending can.Component, you've registered your component with the system. When CanJS parses the base_template.stache file, and encounters the "restaurant-list" tag, it will automatically instantiate the can.Component associated with it, generate the Component's view inside of its custom tag, and bind that view to your component's scope.
 
 Let's look at an image that describes how all of this works, to make it clearer:
 
@@ -100,28 +104,28 @@ As mentioned above, when the template containing the can.Component's tag is pars
 ![](images/2_first_component/ComponentTagRenderedHTML.png)
 
 ####Template
-The `template` property of the can.Component contains the string value of the can.Component's template. Note that the template property just contains a string value. You can inline the template, if it is small. However, the recommended way of working with templates, to maintain separation of concerns, is to keep them in their own files and load them using can.view, as we have done here.
+The `template` property of the `can.Component` contains the string value of the `can.Component`'s template. Note that the template property just contains a string value. You can inline the template, if it is small. However, the recommended way of working with templates, to maintain separation of concerns, is to keep them in their own files and load them using `can.view`, as we have done here.
 
 ####Scope
-The `scope` object is the can.Component's view model. The view model is an abstraction of the view that exposes public properties and functions. Any property or method defined on the scope object is available from the can.Component's template as either a Stache data key, or a function. In our example above, we created a property, "currentRestaurant", and then referenced it as a Stache data key in our template.
+The `scope` object is the can.Component's view model. The view model is an abstraction of the view that exposes public properties and functions. Any property or method defined on the scope object is available from the can.Component's template as either a Stache data key, or a function. In our example above, we created the property "currentRestaurant", then referenced it as a Stache data key in our template.
 
 ![](images/2_first_component/ComponentScopeTemplateLink.png)
 
 #####can.Map &amp; can.List
 The scope is a special type of object, called a "can.Map". can.Map objects are observable. Observable objects emit events whenever their properties change. can.view (and subsequently can.Component) subscribe to these events and update the DOM as needed. If you've cross-bound the values between your scope and your view, changes to your view will also be reflected in your scope. We'll see how this works in the next chapter.
 
-can.Map is able to emit these events because of the `attr` method. This is important. In order to broadcast the associated events when you change a property on a `can.Map`, you must use the `attr` method when setting or getting a value.
+can.Map is able to emit these events because of the `attr` method. This is important. In order to dispatch the associated events when a property is changed on a `can.Map`, you must use the `attr` method when setting or getting a value.
 
-The `attr` method can be used to either get or set a property on a can.Map. 
-      
+The `attr` method can be used to either get or set a property on a can.Map.
+
     var myCanMapInstance = new can.Map({
       id: 12,
       person: {
         name: {
-          last: 'Ludwick'
+          last: 'Ludwig'
           last: 'Beethoven'
         }
-      } 
+      }
     });
 
     myCanMapInstance.attr('id'); // -> 12
