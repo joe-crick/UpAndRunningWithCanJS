@@ -59,7 +59,7 @@ It should look like this:
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
     <script src="libs/can.custom.js"></script>
     <script src="//canjs.com/release/2.1.4/can.fixture.js"></script>
-	<script src="app.js"></script>
+    <script src="app.js"></script>
     </body>
     </html>
 

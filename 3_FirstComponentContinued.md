@@ -142,10 +142,10 @@ Next, you'll notice that when you select a restaurant from the list, the followi
 
 ![](images/3_first_continued/RestaurantDetailsFirstDisplay.png)
 
-We set up the display of the current restaurant section earlier in the template. The default value for currentRestaurant, when the RestaurantListComponent is first loaded is 'undefined'. Setting the value to 'undefined' causes the Stache template to remove it from the DOM. As soon as we set currentRestaurant to a valid value, the scope, which is an observable can.Map, broadcasts this change, and the template refreshes automatically, rendering the current restaurant section.
+We set up the display of the current restaurant section earlier in the template. The default value for `currentRestaurant`, when the `RestaurantListComponent` is first loaded is `undefined`. Setting the value to `undefined` causes the view to remove it from the DOM. By changing the `currentRestaurant` of the scope (which is an observable `can.Map`) to a valid value a "change" event is triggered. Having known that the template depends on this value, the view is listening for this change event and makes the appropriate changes to the DOM based on the new value and the template.
 
-##View Models
-It's considered a best practice to keep your can.Components thin. This helps maintain readability, and maintainability. To accomplish, you extract your scope from the can.Component into a can.Map.
+## View Models
+It's considered a best practice to keep your can.Components thin. This helps maintain readability, and maintainability. To accomplish this, extract your scope from the can.Component into a can.Map.
 
 Open up restaurant_list_component.js, and add the following code:
 
