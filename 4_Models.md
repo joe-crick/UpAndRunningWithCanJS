@@ -42,7 +42,26 @@ A can.Model's staticProperties parameter has several reserved properties you can
 
 The findXxx methods are available directly off of the object definition (i.e., they are static). The create, update, and destroy methods are available off of specific instances of a can.Model. We'll see how to use these below.
 
-**Reminder**: The number of parameters you pass in to an extend method is important. If you pass in a single parameter object, the extend method will use that to set the instanceProperties. If you pass in two parameter objects, the *first* object passed in will be used to set the *staticProperties*. The second parameter will be used to set the *instanceProperties*. Here, we only want to set the staticProperties, so we must pass in a second, blank object.
+**Reminder**: The number of parameters you pass in to an extend method is important. If you pass in a single parameter object, the extend method will use that to set the instanceProperties. If you pass in two parameter objects, the *first* object passed in will be used to set the *staticProperties*. The second parameter will be used to set the *instanceProperties*. Here, we only want to set the staticProperties, so we must pass in a second, blank object. 
+
+A few examples illustrate this, below:
+
+```
+var MyModel = can.Model.extend({
+ findAll: function () {
+ // Static method
+ }
+}, {
+ destroy: function () {
+ // Instance method
+ }
+});
+
+MyModel.findAll(); // Reference a method defined on the contructor
+
+var modelInstance = new MyModel();
+modelInstance.destroy(); // Reference a method defined on the prototype
+```
 
 ##The Data for Our Model
 
