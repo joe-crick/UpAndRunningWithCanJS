@@ -91,7 +91,7 @@ Put the following code inside restaurant_list_component.js:
 
 Add the following code to restaurant_list.stache:
 
-	<div>{{currentRestaurant}}</div>
+	<h1>{{currentRestaurant}}</h1>
 
 Add the code below to the /app/base_template.stache file:
 
@@ -149,7 +149,7 @@ As mentioned above, when the template containing the can.Component's tag is pars
 The `template` property of the can.Component contains the string value of the can.Component's template. Note that the template property just contains a string value. You can inline the template, if it is small. However, the recommended way of working with templates, to maintain separation of concerns, is to keep them in their own files and load them using can.view, as we have done here.
 
 ####Scope
-The `scope` object is the can.Component's view model. The view model is an abstraction of the view that exposes public properties and functions. Any property or method defined on the scope object is available from the can.Component's template as either a Stache data key, or a function. In our example above, we created a property, "currentRestaurant", and then referenced it as a Stache data key in our template.
+The `scope` object is the can.Component's view model. The view model is an abstraction of the view that exposes public properties and functions. Any property or method defined on the scope object is available from the can.Component's template as either a Stache data key, or a function. In our example above, we created the property "currentRestaurant", and then referenced it as a Stache data key in our template.
 
 ![](images/2_first_component/ComponentScopeTemplateLink.png)
 
