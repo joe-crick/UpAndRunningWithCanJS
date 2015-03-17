@@ -33,7 +33,7 @@ Add the following to order_form.stache:
 
     {{/each}}
 
-    {{#delivery}}
+    {{#each delivery}}
 
         <div id="CustomerDetails">
             <label>Name:
@@ -52,7 +52,7 @@ Add the following to order_form.stache:
                 <input type="tel" can-value="telephone" id="telephone"/>
             </label></div>
 
-    {{/delivery}}
+    {{/each}}
 
     <button can-click="placeOrder">Place My Order!</button>
 
@@ -62,7 +62,7 @@ In the template above, we're binding the values:
 - address
 - telephone
 
-to the "delivery" object of the View Model. We do that using both the delivery section, defined by {{#delivery}} ... {{/delivery}}, and the `can-value` attribute. `can-value` is a can.view attribute that establishes two-way binding between an element in a template and its associated View Model.
+to the "delivery" object of the View Model. We do that using both the delivery section, defined by {{#each delivery}} ... {{/each}}, and the `can-value` attribute. `can-value` is a can.view attribute that establishes two-way binding between an element in a template and its associated View Model.
 
 Add the following to order_form_component.js:
 
@@ -84,7 +84,7 @@ Add the following to order_form_component.js:
             });
 
             return new MenuOrderModel({
-                delivery: this.attr('delivery'),
+                delivery: this.attr('details'),
                 menuItems: menuItems
             });
         },
@@ -124,7 +124,7 @@ Let's look at a few items in the code above. Notice that we're creating a new in
 We assign the value of this.attr('details') to the MenuOrderModel's delivery property. If you recall, we bound the values of the name, address, and telephone number fields to the "delivery" object in the order_form.stache view template. Now, all we need to do to get the values of those fields is reference them off of the View Model's delivery property.
 
 ###Moving from DOM to the model
-When we created the RestaurantListComponent, we used the {{data '...'}} Stache key, and jQuery to obtain a reference to the restaurant object associated with the choice the user selected in the restaurants dropdown. Ideally, we don't want to be interacting with the DOM directly in our application. We want CanJS to do that for us, so we can focus on the application itself. In the createOrder function, instead of getting our data from the DOM, we get it from our scope.
+When we created the RestaurantListComponent, we used the {{data '...'}} Stache key, and jQuery to obtain a reference to the restaurant object associated with the choice the user selected in the restaurants dropdown. We almost never want to be interacting with the DOM directly in our application. We want CanJS to do that for us, so we can focus on the application itself. In the createOrder function, instead of getting our data from the DOM, we get it from our scope.
 
 ###Save fixture
 Open up fixtures.js (in the models folder), and add the following fixture:
