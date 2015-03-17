@@ -1,7 +1,7 @@
 #Up and Running with CanJS <a name="introduction"></a>
 *Better Apps, Faster*
 
-CanJS is a lightweight, modern JavaScript [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel) framework that's fast and easy to use, while remaining robust and extensible enough to power some of the most trafficked websites in the world. To see just how simple it is to get an application up and running using CanJS, we'll develop one together.
+CanJS is a lightweight, modern JavaScript [MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel) framework that's fast and easy to use, while remaining robust and extensible enough to power some of the most trafficked websites in the world. To see just how simple it is to get an application up and running using CanJS, we'll develop one together. This guide will walk you through the steps of building a small e-commerce app with CanJS.
 
 ##The Basics
 Every CanJS application contains:
