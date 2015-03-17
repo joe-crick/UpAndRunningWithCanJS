@@ -22,7 +22,7 @@ In the models folder, create a file called "site_models.js". Add the following c
 	var RestaurantModel = can.Model.extend({
         findAll: "GET /restaurants"
     },
-    //Include second, blank parameter object to set staticProperties
+    //Include second, blank parameter object to set instanceProperties
     {});
 
 
@@ -46,7 +46,7 @@ The findXxx methods are available directly off of the object definition (i.e., t
 
 ##The Data for Our Model
 
-We're not going to connect to a server to retrieve our data; however, we're going code our model as if we were. How can this possibly work? CanJS provides a handy utility, can.fixture, that we can use to mimic the functionality of connecting to a server. As the CanJS docs say, "can.fixture intercepts an AJAX request and simulates the response with a file or a function. You can [can.fixutres] to develop JavaScript independently of backend services."
+We're not going to connect to a server to retrieve our data; however, we're going to code our model as if we were. How can this possibly work? CanJS provides a handy utility, can.fixture, that we can use to mimic the functionality of connecting to a server. As the CanJS docs say, "can.fixture intercepts an AJAX request and simulates the response with a file or a function. You can use [can.fixutre] to develop JavaScript independently of backend services."
 
 can.fixture is not included with the base CanJS package. It's a good practice to keep it separate from your production CanJS library, which is why we downloaded it from its CDN in a separate script tag, rather than including it with our custom download. *If you use can.fixture during development, remember to remove it once you are connecting to your REST services*.
 
