@@ -1,8 +1,13 @@
+<div id="orderForm">
+
 <h1>{{restaurantName}}</h1>
 
 {{#each menus}}
 
     <h3>{{menuName}}</h3>
+	
+	
+	
 
     {{#each items}}
         <label>
@@ -12,7 +17,10 @@
 
 {{/each}}
 
+<br /><hr/>
 
+
+<h3>Customer Details</h3>
 {{#delivery}}
 
     <div id="customer-details">
@@ -34,4 +42,8 @@
 
 {{/delivery}}
 
+<br /><hr/>
+
 <button can-click="placeOrder">Place My Order!</button>
+
+</div>

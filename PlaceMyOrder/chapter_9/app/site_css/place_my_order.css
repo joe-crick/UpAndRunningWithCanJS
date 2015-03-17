@@ -28,6 +28,10 @@ hr {
 
 label {
     display: block;
+	padding-top: 20px;
+	font-size:36px;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight:200;
 }
 
 #CustomerDetails{
@@ -111,10 +115,12 @@ label {
 
 .navbar-blue .dropdown-menu li a {
     color: #2A4888;
+	
 }
 
 .navbar-blue .dropdown-menu li > a {
     padding-left: 30px;
+	
 }
 
 .navbar-blue li > a:hover, .navbar-blue li > a:focus, .navbar-blue .open, .navbar-blue .open > a, .navbar-blue .open > a:hover, .navbar-blue .open > a:focus {
@@ -135,13 +141,44 @@ label {
     width: 70px;
 }
 
-#sidebar, #sidebar a, #sidebar-footer a {
+/* #sidebar, #sidebar a, #sidebar-footer a {
     color: #ffffff;
     background-color: #165489;
     text-shadow: 0 0 2px #000000;
     margin-right: 10px;
     margin-left: -10px;
     margin-top: 0;
+} */
+
+ #sidebar {
+    color: #ffffff;
+    background-color: #165489;
+    text-shadow: 0 0 2px #000000;
+    margin-right: 10px;
+    margin-left: -10px;
+    margin-top: 0;
+	padding-left: 28px;
+	font-style:italic;
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif;
+	font-size:15px;
+} 
+
+#sidebar a, #sidebar-footer a {
+    color: #ffffff;
+    background-color: #165489;
+    text-shadow: 0 0 2px #000000;
+    margin-right: 10px;
+    margin-left: 5px;
+    margin-top: 0;
+	font-style: normal;
+	
+}
+#sidebar h4{
+	font-size:18px;
+	text-transform: uppercase;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight:200;
+	font-style:normal;
 }
 
 #sidebar .nav li > a:hover {
@@ -171,11 +208,63 @@ label {
 #sidebar-footer {
     background-color: #165489;
     bottom: 5px;
+	
 }
 
 #footer {
     margin-bottom: 20px;
+	
 }
+
+#container {
+	margin-left: auto;
+	margin-right: auto;
+}
+#container .dropdown {
+	width: 300px;
+	font-size:36px;
+}
+#current-restaurant {
+	margin-top: 20px;
+}
+#current-restaurant ul {
+	list-style-type: none;
+	font-size:18px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-left:0; 
+}
+#current-restaurant li {
+	margin-top: 5px;
+}
+#current-restaurant h3 {
+	font-weight: 200;
+}
+
+#orderForm {
+	padding-top: 20px;
+}
+
+
+#orderForm label {
+	font-size: 20px;
+	margin-top: -15px;
+}
+#orderForm h1 {
+	font-size: 36px;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight:200;
+}
+#orderForm h3 {
+	margin-top: 15px;
+	font-size: 18px;
+	font-style:bold;
+}
+
+#customer-details {
+	font-size: 18px;
+}
+
 
 /* bootstrap overrides */
 
@@ -274,6 +363,8 @@ small.text-muted {
     font-family: courier, courier-new, monospace;
 }
 
+
+
 /* adjust the contents on smaller devices */
 @media (max-width: 768px) {
 
@@ -285,12 +376,13 @@ small.text-muted {
         padding-top: 20px;
     }
 
-    .navbar-blue {
+   /* .navbar-blue {
         background-color: #3B5999;
         top: 0;
         width: 100%;
         position: relative;
-    }
+    } */
+	
 
 }
 
@@ -319,6 +411,7 @@ small.text-muted {
     }
 
     #sidebar, #sidebar a, #sidebar-footer a {
-        padding-left: 3px;
+        padding-left: 8px;
     }
+	
 }
